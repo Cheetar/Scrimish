@@ -178,7 +178,7 @@ class Scrimish(object):
         return list(filter(lambda action: self.is_action_valid(action), range(self.action_num)))
 
     def valid_nondiscard_actions(self):
-        return list(filter(lambda action: self.is_action_valid(action) and self.is_action_discard(action), range(self.action_num)))
+        return list(filter(lambda action: self.is_action_valid(action) and not self.is_action_discard(action), range(self.action_num)))
 
     def valid_actions_mask(self):
         return list(map(lambda action: 1 if self.is_action_valid(action) else 0, range(self.action_num)))

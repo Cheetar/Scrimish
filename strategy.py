@@ -36,8 +36,10 @@ class NoDiscardRandomStrategy(Strategy):
         super().__init__(env, name, deck)
 
     def act(self, env, state):
-        # TODO
-        return random.choice(env.valid_actions())
+        nondiscard_actions = env.valid_nondiscard_actions()
+        if len(nondiscard_actions) > 0:
+            return random.choice(nondiscard_actions)
+        return random.choice(env.valid_actions)
 
 
 class DQNStrategy(Strategy):
